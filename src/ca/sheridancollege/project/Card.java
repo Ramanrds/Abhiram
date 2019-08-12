@@ -10,42 +10,40 @@ package ca.sheridancollege.project;
  * enough to be instantiated for any Card game. Students wishing to add to the code 
  * should remember to add themselves as a modifier.
  * @author dancye, 2018
+ * Modified by group Abhiram
  */
-public abstract class Card 
-{
-    //default modifier for child classes
-    private int rank;
-    private String suit;
-    /**
-     * Students should implement this method for their specific children classes 
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
+public class Card {
     
-    @Override
-    public abstract String toString();
-
-	public int getRank() {
-		return this.rank;
-	}
-
-	/**
-	 * 
-	 * @param rank
-	 */
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	public String getSuit() {
-		return this.suit;
-	}
-
-	/**
-	 * 
-	 * @param suit
-	 */
-	public void setSuit(String suit) {
-		this.suit = suit;
-	}
+    /* Intializing the suit and card numbers */
+    private int value; 
+    private int suit; 
     
-}
+    
+    /*The Constructor*/
+    public Card(int s, int gVal){
+        value = gVal;
+        suit = s;
+    }
+
+    
+    
+    public int getValue(){
+        return value; 
+    }
+    
+    
+    public int getSuit() {
+        return suit;
+    }
+
+    
+    
+    public void setValue(int gVal){
+        value = gVal;
+    }
+
+  
+    public void setSuit(int suit) {
+        this.suit = suit;
+    }
+}//end Card Class 
