@@ -5,60 +5,70 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
- * The class that models your game. You should create a more specific
- * child of this class and instantiate the methods given.
- * @author dancye, 2018
+ modified by group-Abhiram
  */
-public abstract class Game 
-{
-    private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
-    
-    public Game(String givenName)
-    {
-        gameName = givenName;
-        players = new ArrayList();
-    }
-
+public class Game extends Card {
     /**
-     * @return the gameName
+     * The Game class Takes the numbers and suits from by card class 
+     * to combine them and make a deck out of them.
+     * 
      */
-    public String getGameName() 
+    
+    
+    public Game(int s, int gVal)
     {
-        return gameName;
+        super(s,gVal);
     }
     
-     /**
-     * @return the players of this game
-     */
-    public ArrayList <Player> getPlayers() 
-    {
-        return players;
+    @Override
+    public String toString(){
+    
+        StringBuilder display = new StringBuilder();
+        
+       
+        
+        switch(super.getValue()){
+            //since rank is int type, now match int 11 to String jack...14 to Ace
+            case 11:
+                display.append("Jack");
+                break;
+            case 12:
+                display.append("Queen");
+                break;
+            case 13:
+                display.append("King");
+                break;
+            case 14:
+                display.append("Ace");
+                break;    
+            default:
+                display.append(super.getValue()); //no need to modify
+                break;
+        }
+        
+        display.append(" of ");
+        
+        switch(super.getSuit()){
+            case 0:
+                display.append("Spades");
+                break;
+            case 1:
+                display.append("Hearts");
+                break;
+            case 2:
+                display.append("Clubs");
+                break;
+            case 3:
+                display.append("Diamonds");
+                break;
+            default: 
+                break;
+        }//end suit switch
+       
+        return display.toString();
     }
-
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList <Player> players) 
-    {
-        this.players = players;
-    }
-    
-    /**
-     * Play the game. This might be one method or many method calls depending
-     * on your game.
-     */
-    public abstract void play();
-    
-    /**
-     * When the game is over, use this method to declare and display a winning
-     * player.
-     */
-    public abstract void declareWinner();
-
-   
-    
-}//end class
+	
+}
